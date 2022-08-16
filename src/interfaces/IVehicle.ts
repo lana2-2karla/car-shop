@@ -13,3 +13,4 @@ type IVehicle = z.infer<typeof vehicleZodSchema>;
 export { vehicleZodSchema, IVehicle };
 
 // atributo opcional - ref: https://codex.so/zod-validation-en
+// validações - ref: https://github.com/colinhacks/zod#numbers
