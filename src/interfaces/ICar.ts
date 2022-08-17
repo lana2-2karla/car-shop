@@ -1,12 +1,16 @@
 import { z } from 'zod';
-import { IVehicle } from './IVehicle';
+import { vehicleZodSchema } from './IVehicle';
 
-const carZodSchema = z.object({
-  doorsQty: z.number().gte(2).lte(4),
-  seatsQty: z.number().gte(2).lte(7),
+const carZodSchema = vehicleZodSchema.extend({
+  doorsQty: z.number({ 
+    required_error: 'doorsQty is required',
+    invalid_type_error: 'doorsQty must be a number' }).gte(2).lte(4),
+  seatsQty: z.number({ 
+    required_error: 'seatsQty is required',
+    invalid_type_error: 'seatsQty must be a number' }).gte(2).lte(7),
 });
 
-type ICar = IVehicle & z.infer<typeof carZodSchema>;
+type ICar = z.infer<typeof carZodSchema>;
 
 export { carZodSchema, ICar };
 
