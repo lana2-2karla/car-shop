@@ -17,11 +17,11 @@ type ErrorCatalog = {
     
 const errorCatalog: ErrorCatalog = {
   EntityNotFound: {
-    message: 'Entity not found',
+    message: 'Object not found',
     httpStatus: 404,
   },
   InvalidMongoId: {
-    message: 'Id must be a 24 characters hexadecimal',
+    message: 'Id must have 24 hexadecimal characters',
     httpStatus: 400,
   },
 };
