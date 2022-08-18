@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { ICar } from '../interfaces/ICar';
-// import { IRequest } from '../interfaces/IRequest';
 import { IService } from '../interfaces/IService';
 
 class CarsController {
@@ -13,6 +12,11 @@ class CarsController {
 
   public async read(req: Request, res: Response<ICar[]>) {
     const results = await this._service.read();
+    return res.status(200).json(results);
+  }
+
+  public async readOne(req: Request, res: Response<ICar>) {
+    const results = await this._service.readOne(req.params.id);
     return res.status(200).json(results);
   }
 }
